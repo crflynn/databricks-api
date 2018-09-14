@@ -65,7 +65,9 @@ for k, v in db.__dict__.items():
     if k == "client":
         continue
     print(k, v)
-    services.append("**DatabricksAPI." + k + "**\n\n")
+    h = "DatabricksAPI." + k
+    services.append(h + "\n")
+    services.append("-" * len(h) + "\n\n")
     methods = inspect.getmembers(v, predicate=inspect.ismethod)
     print(methods)
     for method in methods:

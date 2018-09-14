@@ -47,7 +47,8 @@ on the functionality and required arguments of each method below.
 
 Each of the service instance attributes provides the following public methods:
 
-**DatabricksAPI.jobs**
+DatabricksAPI.jobs
+------------------
 
 * ``DatabricksAPI.jobs.cancel_run(run_id)``
 * ``DatabricksAPI.jobs.create_job(name=None, existing_cluster_id=None, new_cluster=None, libraries=None, email_notifications=None, timeout_seconds=None, max_retries=None, min_retry_interval_millis=None, retry_on_timeout=None, schedule=None, notebook_task=None, spark_jar_task=None, spark_python_task=None, spark_submit_task=None, max_concurrent_runs=None)``
@@ -63,7 +64,8 @@ Each of the service instance attributes provides the following public methods:
 * ``DatabricksAPI.jobs.run_now(job_id=None, jar_params=None, notebook_params=None, python_params=None, spark_submit_params=None)``
 * ``DatabricksAPI.jobs.submit_run(run_name=None, existing_cluster_id=None, new_cluster=None, libraries=None, notebook_task=None, spark_jar_task=None, spark_python_task=None, spark_submit_task=None, timeout_seconds=None)``
 
-**DatabricksAPI.cluster**
+DatabricksAPI.cluster
+---------------------
 
 * ``DatabricksAPI.cluster.create_cluster(num_workers=None, autoscale=None, cluster_name=None, spark_version=None, spark_conf=None, aws_attributes=None, node_type_id=None, driver_node_type_id=None, ssh_public_keys=None, custom_tags=None, cluster_log_conf=None, spark_env_vars=None, autotermination_minutes=None, enable_elastic_disk=None, cluster_source=None)``
 * ``DatabricksAPI.cluster.delete_cluster(cluster_id)``
@@ -77,14 +79,16 @@ Each of the service instance attributes provides the following public methods:
 * ``DatabricksAPI.cluster.restart_cluster(cluster_id)``
 * ``DatabricksAPI.cluster.start_cluster(cluster_id)``
 
-**DatabricksAPI.managed_library**
+DatabricksAPI.managed_library
+-----------------------------
 
 * ``DatabricksAPI.managed_library.all_cluster_statuses()``
 * ``DatabricksAPI.managed_library.cluster_status(cluster_id)``
 * ``DatabricksAPI.managed_library.install_libraries(cluster_id, libraries=None)``
 * ``DatabricksAPI.managed_library.uninstall_libraries(cluster_id, libraries=None)``
 
-**DatabricksAPI.dbfs**
+DatabricksAPI.dbfs
+------------------
 
 * ``DatabricksAPI.dbfs.add_block(handle, data)``
 * ``DatabricksAPI.dbfs.close(handle)``
@@ -97,7 +101,8 @@ Each of the service instance attributes provides the following public methods:
 * ``DatabricksAPI.dbfs.put(path, contents=None, overwrite=None)``
 * ``DatabricksAPI.dbfs.read(path, offset=None, length=None)``
 
-**DatabricksAPI.workspace**
+DatabricksAPI.workspace
+-----------------------
 
 * ``DatabricksAPI.workspace.delete(path, recursive=None)``
 * ``DatabricksAPI.workspace.export_workspace(path, format=None, direct_download=None)``
@@ -106,7 +111,8 @@ Each of the service instance attributes provides the following public methods:
 * ``DatabricksAPI.workspace.list(path)``
 * ``DatabricksAPI.workspace.mkdirs(path)``
 
-**DatabricksAPI.secret**
+DatabricksAPI.secret
+--------------------
 
 * ``DatabricksAPI.secret.create_scope(scope, initial_manage_principal=None)``
 * ``DatabricksAPI.secret.delete_acl(scope, principal)``
@@ -119,7 +125,8 @@ Each of the service instance attributes provides the following public methods:
 * ``DatabricksAPI.secret.put_acl(scope, principal, permission)``
 * ``DatabricksAPI.secret.put_secret(scope, key, string_value=None, bytes_value=None)``
 
-**DatabricksAPI.groups**
+DatabricksAPI.groups
+--------------------
 
 * ``DatabricksAPI.groups.add_to_group(parent_name, user_name=None, group_name=None)``
 * ``DatabricksAPI.groups.create_group(group_name)``
