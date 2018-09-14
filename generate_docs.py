@@ -68,12 +68,13 @@ for k, v in db.__dict__.items():
     h = "DatabricksAPI." + k
     services.append(h + "\n")
     services.append("-" * len(h) + "\n\n")
+    services.append(".. code-block:: python\n\n")
     methods = inspect.getmembers(v, predicate=inspect.ismethod)
     print(methods)
     for method in methods:
         print(method)
         if not method[0].startswith("_"):
-            services.append("* " + "``DatabricksAPI." + k + "." + method[0] + str(inspect.signature(method[1])) + "``\n")
+            services.append("    DatabricksAPI." + k + "." + method[0] + str(inspect.signature(method[1])) + "\n\n")
     services.append("\n")
 
 
