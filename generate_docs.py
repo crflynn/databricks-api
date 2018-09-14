@@ -44,13 +44,13 @@ underlying ``ApiClient.__init__``
 
     from databricks_api import DatabricksAPI
 
-    // Provide a host and token
+    # Provide a host and token
     db = DatabricksAPI(host="example.cloud.databricks.com", token="dpapi123...")
 
-    // OR a host and user and password
+    # OR a host and user and password
     db = DatabricksAPI(host="example.cloud.databricks.com", user="me@example.com", password="password")
 
-    // Full __init__ signature
+    # Full __init__ signature
     {instantiate}
 
 Refer to the `official documentation <https://docs.databricks.com/api/index.html>`_
