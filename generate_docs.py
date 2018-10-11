@@ -35,6 +35,9 @@ attrs = []
 for k, v in db.__dict__.items():
     attrs.append("* DatabricksAPI." + k + " *<" + v.__class__.__module__ + "." + v.__class__.__name__ + ">*\n")
 
+signature = str(inspect.signature(databricks_cli.sdk.ApiClient))
+signature = "(\n        " + ",\n        ".join(signature[1:-1].split(", ")) + "\n    )"
+
 middle = """
 To instantiate the client, provide the databricks host and either a token or
 user and password. Also shown is the full signature of the
@@ -45,10 +48,17 @@ underlying ``ApiClient.__init__``
     from databricks_api import DatabricksAPI
 
     # Provide a host and token
-    db = DatabricksAPI(host="example.cloud.databricks.com", token="dpapi123...")
+    db = DatabricksAPI(
+        host="example.cloud.databricks.com",
+        token="dpapi123..."
+    )
 
     # OR a host and user and password
-    db = DatabricksAPI(host="example.cloud.databricks.com", user="me@example.com", password="password")
+    db = DatabricksAPI(
+        host="example.cloud.databricks.com",
+        user="me@example.com",
+        password="password"
+    )
 
     # Full __init__ signature
     {instantiate}
@@ -58,7 +68,7 @@ on the functionality and required arguments of each method below.
 
 Each of the service instance attributes provides the following public methods:
 
-""".format(instantiate="db = DatabricksAPI" + str(inspect.signature(databricks_cli.sdk.ApiClient)))
+""".format(instantiate="db = DatabricksAPI" + signature)
 
 services = []
 for k, v in db.__dict__.items():
