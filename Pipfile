@@ -12,3 +12,4 @@ databricks-cli = "*"
 
 [dev-packages]
 
+twine = "*"
