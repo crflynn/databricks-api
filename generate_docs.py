@@ -74,7 +74,10 @@ for k, v in db.__dict__.items():
     for method in methods:
         print(method)
         if not method[0].startswith("_"):
-            services.append("    DatabricksAPI." + k + "." + method[0] + str(inspect.signature(method[1])) + "\n\n")
+            signature = str(inspect.signature(method[1]))
+            if "," in signature:
+                signature = "(\n        " + ",\n        ".join(signature[1:-1].split(", ")) + "\n    )"
+            services.append("    DatabricksAPI." + k + "." + method[0] + signature + "\n\n")
     services.append("\n")
 
 

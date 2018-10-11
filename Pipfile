@@ -12,4 +12,3 @@ databricks-cli = "*"
 
 [dev-packages]
 
-sphinx = "*"

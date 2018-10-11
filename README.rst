@@ -54,13 +54,32 @@ DatabricksAPI.jobs
 
     DatabricksAPI.jobs.cancel_run(run_id)
 
-    DatabricksAPI.jobs.create_job(name=None, existing_cluster_id=None, new_cluster=None, libraries=None, email_notifications=None, timeout_seconds=None, max_retries=None, min_retry_interval_millis=None, retry_on_timeout=None, schedule=None, notebook_task=None, spark_jar_task=None, spark_python_task=None, spark_submit_task=None, max_concurrent_runs=None)
+    DatabricksAPI.jobs.create_job(
+        name=None,
+        existing_cluster_id=None,
+        new_cluster=None,
+        libraries=None,
+        email_notifications=None,
+        timeout_seconds=None,
+        max_retries=None,
+        min_retry_interval_millis=None,
+        retry_on_timeout=None,
+        schedule=None,
+        notebook_task=None,
+        spark_jar_task=None,
+        spark_python_task=None,
+        spark_submit_task=None,
+        max_concurrent_runs=None
+    )
 
     DatabricksAPI.jobs.delete_job(job_id)
 
     DatabricksAPI.jobs.delete_run(run_id=None)
 
-    DatabricksAPI.jobs.export_run(run_id, views_to_export=None)
+    DatabricksAPI.jobs.export_run(
+        run_id,
+        views_to_export=None
+    )
 
     DatabricksAPI.jobs.get_job(job_id)
 
@@ -70,13 +89,38 @@ DatabricksAPI.jobs
 
     DatabricksAPI.jobs.list_jobs()
 
-    DatabricksAPI.jobs.list_runs(job_id=None, active_only=None, completed_only=None, offset=None, limit=None)
+    DatabricksAPI.jobs.list_runs(
+        job_id=None,
+        active_only=None,
+        completed_only=None,
+        offset=None,
+        limit=None
+    )
 
-    DatabricksAPI.jobs.reset_job(job_id, new_settings)
+    DatabricksAPI.jobs.reset_job(
+        job_id,
+        new_settings
+    )
 
-    DatabricksAPI.jobs.run_now(job_id=None, jar_params=None, notebook_params=None, python_params=None, spark_submit_params=None)
+    DatabricksAPI.jobs.run_now(
+        job_id=None,
+        jar_params=None,
+        notebook_params=None,
+        python_params=None,
+        spark_submit_params=None
+    )
 
-    DatabricksAPI.jobs.submit_run(run_name=None, existing_cluster_id=None, new_cluster=None, libraries=None, notebook_task=None, spark_jar_task=None, spark_python_task=None, spark_submit_task=None, timeout_seconds=None)
+    DatabricksAPI.jobs.submit_run(
+        run_name=None,
+        existing_cluster_id=None,
+        new_cluster=None,
+        libraries=None,
+        notebook_task=None,
+        spark_jar_task=None,
+        spark_python_task=None,
+        spark_submit_task=None,
+        timeout_seconds=None
+    )
 
 
 DatabricksAPI.cluster
@@ -84,11 +128,44 @@ DatabricksAPI.cluster
 
 .. code-block:: python
 
-    DatabricksAPI.cluster.create_cluster(num_workers=None, autoscale=None, cluster_name=None, spark_version=None, spark_conf=None, aws_attributes=None, node_type_id=None, driver_node_type_id=None, ssh_public_keys=None, custom_tags=None, cluster_log_conf=None, spark_env_vars=None, autotermination_minutes=None, enable_elastic_disk=None, cluster_source=None)
+    DatabricksAPI.cluster.create_cluster(
+        num_workers=None,
+        autoscale=None,
+        cluster_name=None,
+        spark_version=None,
+        spark_conf=None,
+        aws_attributes=None,
+        node_type_id=None,
+        driver_node_type_id=None,
+        ssh_public_keys=None,
+        custom_tags=None,
+        cluster_log_conf=None,
+        spark_env_vars=None,
+        autotermination_minutes=None,
+        enable_elastic_disk=None,
+        cluster_source=None
+    )
 
     DatabricksAPI.cluster.delete_cluster(cluster_id)
 
-    DatabricksAPI.cluster.edit_cluster(cluster_id, num_workers=None, autoscale=None, cluster_name=None, spark_version=None, spark_conf=None, aws_attributes=None, node_type_id=None, driver_node_type_id=None, ssh_public_keys=None, custom_tags=None, cluster_log_conf=None, spark_env_vars=None, autotermination_minutes=None, enable_elastic_disk=None, cluster_source=None)
+    DatabricksAPI.cluster.edit_cluster(
+        cluster_id,
+        num_workers=None,
+        autoscale=None,
+        cluster_name=None,
+        spark_version=None,
+        spark_conf=None,
+        aws_attributes=None,
+        node_type_id=None,
+        driver_node_type_id=None,
+        ssh_public_keys=None,
+        custom_tags=None,
+        cluster_log_conf=None,
+        spark_env_vars=None,
+        autotermination_minutes=None,
+        enable_elastic_disk=None,
+        cluster_source=None
+    )
 
     DatabricksAPI.cluster.get_cluster(cluster_id)
 
@@ -100,7 +177,11 @@ DatabricksAPI.cluster
 
     DatabricksAPI.cluster.list_spark_versions()
 
-    DatabricksAPI.cluster.resize_cluster(cluster_id, num_workers=None, autoscale=None)
+    DatabricksAPI.cluster.resize_cluster(
+        cluster_id,
+        num_workers=None,
+        autoscale=None
+    )
 
     DatabricksAPI.cluster.restart_cluster(cluster_id)
 
@@ -116,9 +197,15 @@ DatabricksAPI.managed_library
 
     DatabricksAPI.managed_library.cluster_status(cluster_id)
 
-    DatabricksAPI.managed_library.install_libraries(cluster_id, libraries=None)
+    DatabricksAPI.managed_library.install_libraries(
+        cluster_id,
+        libraries=None
+    )
 
-    DatabricksAPI.managed_library.uninstall_libraries(cluster_id, libraries=None)
+    DatabricksAPI.managed_library.uninstall_libraries(
+        cluster_id,
+        libraries=None
+    )
 
 
 DatabricksAPI.dbfs
@@ -126,13 +213,22 @@ DatabricksAPI.dbfs
 
 .. code-block:: python
 
-    DatabricksAPI.dbfs.add_block(handle, data)
+    DatabricksAPI.dbfs.add_block(
+        handle,
+        data
+    )
 
     DatabricksAPI.dbfs.close(handle)
 
-    DatabricksAPI.dbfs.create(path, overwrite=None)
+    DatabricksAPI.dbfs.create(
+        path,
+        overwrite=None
+    )
 
-    DatabricksAPI.dbfs.delete(path, recursive=None)
+    DatabricksAPI.dbfs.delete(
+        path,
+        recursive=None
+    )
 
     DatabricksAPI.dbfs.get_status(path)
 
@@ -140,11 +236,22 @@ DatabricksAPI.dbfs
 
     DatabricksAPI.dbfs.mkdirs(path)
 
-    DatabricksAPI.dbfs.move(source_path, destination_path)
+    DatabricksAPI.dbfs.move(
+        source_path,
+        destination_path
+    )
 
-    DatabricksAPI.dbfs.put(path, contents=None, overwrite=None)
+    DatabricksAPI.dbfs.put(
+        path,
+        contents=None,
+        overwrite=None
+    )
 
-    DatabricksAPI.dbfs.read(path, offset=None, length=None)
+    DatabricksAPI.dbfs.read(
+        path,
+        offset=None,
+        length=None
+    )
 
 
 DatabricksAPI.workspace
@@ -152,13 +259,26 @@ DatabricksAPI.workspace
 
 .. code-block:: python
 
-    DatabricksAPI.workspace.delete(path, recursive=None)
+    DatabricksAPI.workspace.delete(
+        path,
+        recursive=None
+    )
 
-    DatabricksAPI.workspace.export_workspace(path, format=None, direct_download=None)
+    DatabricksAPI.workspace.export_workspace(
+        path,
+        format=None,
+        direct_download=None
+    )
 
     DatabricksAPI.workspace.get_status(path)
 
-    DatabricksAPI.workspace.import_workspace(path, format=None, language=None, content=None, overwrite=None)
+    DatabricksAPI.workspace.import_workspace(
+        path,
+        format=None,
+        language=None,
+        content=None,
+        overwrite=None
+    )
 
     DatabricksAPI.workspace.list(path)
 
@@ -170,15 +290,27 @@ DatabricksAPI.secret
 
 .. code-block:: python
 
-    DatabricksAPI.secret.create_scope(scope, initial_manage_principal=None)
+    DatabricksAPI.secret.create_scope(
+        scope,
+        initial_manage_principal=None
+    )
 
-    DatabricksAPI.secret.delete_acl(scope, principal)
+    DatabricksAPI.secret.delete_acl(
+        scope,
+        principal
+    )
 
     DatabricksAPI.secret.delete_scope(scope)
 
-    DatabricksAPI.secret.delete_secret(scope, key)
+    DatabricksAPI.secret.delete_secret(
+        scope,
+        key
+    )
 
-    DatabricksAPI.secret.get_acl(scope, principal)
+    DatabricksAPI.secret.get_acl(
+        scope,
+        principal
+    )
 
     DatabricksAPI.secret.list_acls(scope)
 
@@ -186,9 +318,18 @@ DatabricksAPI.secret
 
     DatabricksAPI.secret.list_secrets(scope)
 
-    DatabricksAPI.secret.put_acl(scope, principal, permission)
+    DatabricksAPI.secret.put_acl(
+        scope,
+        principal,
+        permission
+    )
 
-    DatabricksAPI.secret.put_secret(scope, key, string_value=None, bytes_value=None)
+    DatabricksAPI.secret.put_secret(
+        scope,
+        key,
+        string_value=None,
+        bytes_value=None
+    )
 
 
 DatabricksAPI.groups
@@ -196,7 +337,11 @@ DatabricksAPI.groups
 
 .. code-block:: python
 
-    DatabricksAPI.groups.add_to_group(parent_name, user_name=None, group_name=None)
+    DatabricksAPI.groups.add_to_group(
+        parent_name,
+        user_name=None,
+        group_name=None
+    )
 
     DatabricksAPI.groups.create_group(group_name)
 
@@ -204,9 +349,16 @@ DatabricksAPI.groups
 
     DatabricksAPI.groups.get_groups()
 
-    DatabricksAPI.groups.get_groups_for_principal(user_name=None, group_name=None)
+    DatabricksAPI.groups.get_groups_for_principal(
+        user_name=None,
+        group_name=None
+    )
 
-    DatabricksAPI.groups.remove_from_group(parent_name, user_name=None, group_name=None)
+    DatabricksAPI.groups.remove_from_group(
+        parent_name,
+        user_name=None,
+        group_name=None
+    )
 
     DatabricksAPI.groups.remove_group(group_name)
 
