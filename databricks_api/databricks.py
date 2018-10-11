@@ -19,5 +19,5 @@ class DatabricksAPI(object):
 
         for service_name, service in services.__dict__.items():
             if "Service" in service_name:
-                name = camel_to_snake(service_name[:-7])
+                name = camel_to_snake(service_name.replace("Service", ""))
                 setattr(self, name, service(self.client))
