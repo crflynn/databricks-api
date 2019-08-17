@@ -10,6 +10,14 @@ db = DatabricksAPI(host="localhost", token="token")
 intro = """databricks-api
 ==============
 
+|pypi| |pyversions|
+
+.. |pypi| image:: https://img.shields.io/pypi/v/databricks-api.svg
+    :target: https://pypi.python.org/pypi/databricks-api
+
+.. |pyversions| image:: https://img.shields.io/pypi/pyversions/databricks-api.svg
+    :target: https://pypi.python.org/pypi/databricks-api
+
 *[This documentation is auto-generated]*
 
 This package provides a simplified interface for the Databricks REST API.
@@ -25,7 +33,7 @@ Install using
 
 The docs here describe the interface for version **{version}** of
 the ``databricks-cli`` package for API version **{api_version}**.
-Assuming there are no major changes to the ``databricks-cli`` package
+Assuming there are no new major or minor versions to the ``databricks-cli`` package
 structure, this package should continue to work without a required update.
 
 The ``databricks-api`` package contains a ``DatabricksAPI`` class which provides
@@ -33,8 +41,7 @@ instance attributes for the ``databricks-cli`` ``ApiClient``, as well as each of
 the available service instances. The attributes of a ``DatabricksAPI`` instance are:
 
 """.format(
-    version=databricks_cli.version.version,
-    api_version=databricks_cli.sdk.version.API_VERSION,
+    version=databricks_cli.version.version, api_version=databricks_cli.sdk.version.API_VERSION
 )
 
 attrs = []
@@ -75,7 +82,9 @@ on the functionality and required arguments of each method below.
 
 Each of the service instance attributes provides the following public methods:
 
-""".format(instantiate="db = DatabricksAPI" + signature)
+""".format(
+    instantiate="db = DatabricksAPI" + signature
+)
 
 services = []
 for k, v in db.__dict__.items():
@@ -93,7 +102,7 @@ for k, v in db.__dict__.items():
         if not method[0].startswith("_"):
             signature = str(inspect.signature(method[1]))
             if "," in signature:
-                signature = "(\n        " + ",\n        ".join(signature[1:-1].split(", ")) + "\n    )"
+                signature = "(\n        " + ",\n        ".join(signature[1:-1].split(", ")) + ",\n    )"
             services.append("    DatabricksAPI." + k + "." + method[0] + signature + "\n\n")
     services.append("\n")
 
