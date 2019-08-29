@@ -22,9 +22,9 @@ Install using
     pip install databricks-api
     
 
-The docs here describe the interface for version **0.8.7** of
+The docs here describe the interface for version **0.9.0** of
 the ``databricks-cli`` package for API version **2.0**.
-Assuming there are no major changes to the ``databricks-cli`` package
+Assuming there are no new major or minor versions to the ``databricks-cli`` package
 structure, this package should continue to work without a required update.
 
 The ``databricks-api`` package contains a ``DatabricksAPI`` class which provides
@@ -39,6 +39,7 @@ the available service instances. The attributes of a ``DatabricksAPI`` instance 
 * DatabricksAPI.workspace *<databricks_cli.sdk.service.WorkspaceService>*
 * DatabricksAPI.secret *<databricks_cli.sdk.service.SecretService>*
 * DatabricksAPI.groups *<databricks_cli.sdk.service.GroupsService>*
+* DatabricksAPI.instance_pool *<databricks_cli.sdk.service.InstancePoolService>*
 
 To instantiate the client, provide the databricks host and either a token or
 user and password. Also shown is the full signature of the
@@ -522,5 +523,52 @@ DatabricksAPI.groups
         group_name,
         headers=None,
     )
+
+
+DatabricksAPI.instance_pool
+---------------------------
+
+.. code-block:: python
+
+    DatabricksAPI.instance_pool.create_instance_pool(
+        instance_pool_name=None,
+        min_idle_instances=None,
+        max_capacity=None,
+        aws_attributes=None,
+        node_type_id=None,
+        custom_tags=None,
+        idle_instance_autotermination_minutes=None,
+        enable_elastic_disk=None,
+        disk_spec=None,
+        preloaded_spark_versions=None,
+        headers=None,
+    )
+
+    DatabricksAPI.instance_pool.delete_instance_pool(
+        instance_pool_id=None,
+        headers=None,
+    )
+
+    DatabricksAPI.instance_pool.edit_instance_pool(
+        instance_pool_id,
+        instance_pool_name=None,
+        min_idle_instances=None,
+        max_capacity=None,
+        aws_attributes=None,
+        node_type_id=None,
+        custom_tags=None,
+        idle_instance_autotermination_minutes=None,
+        enable_elastic_disk=None,
+        disk_spec=None,
+        preloaded_spark_versions=None,
+        headers=None,
+    )
+
+    DatabricksAPI.instance_pool.get_instance_pool(
+        instance_pool_id=None,
+        headers=None,
+    )
+
+    DatabricksAPI.instance_pool.list_instance_pools(headers=None)
 
 
