@@ -1,6 +1,12 @@
 Release History
 ---------------
 
+0.3.0: 2019-08-28
+~~~~~~~~~~~~~~~~~
+
+* Update to databricks-cli 0.9.0, adding instance pool functionality
+* Fix package metadata access
+
 0.2.0: 2019-08-17
 ~~~~~~~~~~~~~~~~~
 
