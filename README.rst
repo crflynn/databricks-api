@@ -22,7 +22,7 @@ Install using
     pip install databricks-api
     
 
-The docs here describe the interface for version **0.9.0** of
+The docs here describe the interface for version **0.9.1** of
 the ``databricks-cli`` package for API version **2.0**.
 Assuming there are no new major or minor versions to the ``databricks-cli`` package
 structure, this package should continue to work without a required update.
