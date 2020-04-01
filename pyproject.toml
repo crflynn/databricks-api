@@ -52,7 +52,6 @@ python = "~2.7 || ^3.5"
 databricks-cli = "^0.10.0"
 
 [tool.poetry.dev-dependencies]
-twine = "^1.13"
 black = {version = "^19.10b0",allow-prereleases = true,python = "^3.7"}
 pytest = "=4.6"
 
