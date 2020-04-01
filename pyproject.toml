@@ -22,7 +22,7 @@ exclude = '''
 
 [tool.poetry]
 name = "databricks_api"
-version = "0.3.0"
+version = "0.4.0"
 description = "Databricks API client auto-generated from the official databricks-cli package"
 authors = ["Christopher Flynn <crf204@gmail.com>"]
 readme = "README.rst"
@@ -49,11 +49,11 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "~2.7 || ^3.5"
-databricks-cli = "^0.9.0"
+databricks-cli = "^0.10.0"
 
 [tool.poetry.dev-dependencies]
 twine = "^1.13"
-black = {version = "^18.3-alpha.0",allows-prereleases = true,python = "^3.7"}
+black = {version = "^19.10b0",allow-prereleases = true,python = "^3.7"}
 pytest = "=4.6"
 
 [build-system]
