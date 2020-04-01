@@ -16,9 +16,10 @@ publish: build
 
 .PHONY: release
 release: publish
+	rm -rf dist/
 	@echo sha: $(shell git rev-parse HEAD)
 	@echo version: $(VERSION)
-	ghr -t $(GITHUB_TOKEN) -u crflynn -r databricks-api -c $(shell git rev-parse HEAD) -delete $(VERSION) -replace dist/*-$(VERSION)*
+	ghr -t $(GITHUB_TOKEN) -u crflynn -r databricks-api -n $(VERSION) -c $(shell git rev-parse HEAD) -delete $(VERSION) dist/
 
 .PHONY: update
 update:
