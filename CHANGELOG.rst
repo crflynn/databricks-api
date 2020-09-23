@@ -1,5 +1,10 @@
-Release History
----------------
+Changelog
+---------
+
+0.5.0: 2020-09-23
+~~~~~~~~~~~~~~~~~
+
+* Update to databricks-cli 0.12.0, which adds support for policy, token, and delta_pipeline APIs
 
 0.4.0: 2020-04-01
 ~~~~~~~~~~~~~~~~~
