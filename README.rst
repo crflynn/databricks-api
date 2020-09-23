@@ -22,7 +22,7 @@ Install using
     pip install databricks-api
     
 
-The docs here describe the interface for version **0.10.0** of
+The docs here describe the interface for version **0.12.0** of
 the ``databricks-cli`` package for API version **2.0**.
 Assuming there are no new major or minor versions to the ``databricks-cli`` package
 structure, this package should continue to work without a required update.
@@ -34,12 +34,15 @@ the available service instances. The attributes of a ``DatabricksAPI`` instance 
 * DatabricksAPI.client *<databricks_cli.sdk.api_client.ApiClient>*
 * DatabricksAPI.jobs *<databricks_cli.sdk.service.JobsService>*
 * DatabricksAPI.cluster *<databricks_cli.sdk.service.ClusterService>*
+* DatabricksAPI.policy *<databricks_cli.sdk.service.PolicyService>*
 * DatabricksAPI.managed_library *<databricks_cli.sdk.service.ManagedLibraryService>*
 * DatabricksAPI.dbfs *<databricks_cli.sdk.service.DbfsService>*
 * DatabricksAPI.workspace *<databricks_cli.sdk.service.WorkspaceService>*
 * DatabricksAPI.secret *<databricks_cli.sdk.service.SecretService>*
 * DatabricksAPI.groups *<databricks_cli.sdk.service.GroupsService>*
+* DatabricksAPI.token *<databricks_cli.sdk.service.TokenService>*
 * DatabricksAPI.instance_pool *<databricks_cli.sdk.service.InstancePoolService>*
+* DatabricksAPI.delta_pipelines *<databricks_cli.sdk.service.DeltaPipelinesService>*
 
 To instantiate the client, provide the databricks host and either a token or
 user and password. Also shown is the full signature of the
@@ -289,6 +292,37 @@ DatabricksAPI.cluster
     )
 
 
+DatabricksAPI.policy
+--------------------
+
+.. code-block:: python
+
+    DatabricksAPI.policy.create_policy(
+        policy_name,
+        definition,
+        headers=None,
+    )
+
+    DatabricksAPI.policy.delete_policy(
+        policy_id,
+        headers=None,
+    )
+
+    DatabricksAPI.policy.edit_policy(
+        policy_id,
+        policy_name,
+        definition,
+        headers=None,
+    )
+
+    DatabricksAPI.policy.get_policy(
+        policy_id,
+        headers=None,
+    )
+
+    DatabricksAPI.policy.list_policies(headers=None)
+
+
 DatabricksAPI.managed_library
 -----------------------------
 
@@ -527,6 +561,25 @@ DatabricksAPI.groups
     )
 
 
+DatabricksAPI.token
+-------------------
+
+.. code-block:: python
+
+    DatabricksAPI.token.create_token(
+        lifetime_seconds=None,
+        comment=None,
+        headers=None,
+    )
+
+    DatabricksAPI.token.list_tokens(headers=None)
+
+    DatabricksAPI.token.revoke_token(
+        token_id,
+        headers=None,
+    )
+
+
 DatabricksAPI.instance_pool
 ---------------------------
 
@@ -572,5 +625,63 @@ DatabricksAPI.instance_pool
     )
 
     DatabricksAPI.instance_pool.list_instance_pools(headers=None)
+
+
+DatabricksAPI.delta_pipelines
+-----------------------------
+
+.. code-block:: python
+
+    DatabricksAPI.delta_pipelines.create(
+        id=None,
+        name=None,
+        storage=None,
+        configuration=None,
+        clusters=None,
+        libraries=None,
+        trigger=None,
+        filters=None,
+        allow_duplicate_names=None,
+        headers=None,
+    )
+
+    DatabricksAPI.delta_pipelines.delete(
+        pipeline_id=None,
+        headers=None,
+    )
+
+    DatabricksAPI.delta_pipelines.deploy(
+        pipeline_id=None,
+        id=None,
+        name=None,
+        storage=None,
+        configuration=None,
+        clusters=None,
+        libraries=None,
+        trigger=None,
+        filters=None,
+        allow_duplicate_names=None,
+        headers=None,
+    )
+
+    DatabricksAPI.delta_pipelines.get(
+        pipeline_id=None,
+        headers=None,
+    )
+
+    DatabricksAPI.delta_pipelines.reset(
+        pipeline_id=None,
+        headers=None,
+    )
+
+    DatabricksAPI.delta_pipelines.run(
+        pipeline_id=None,
+        headers=None,
+    )
+
+    DatabricksAPI.delta_pipelines.stop(
+        pipeline_id=None,
+        headers=None,
+    )
 
 
