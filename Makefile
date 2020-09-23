@@ -6,6 +6,10 @@ setup:
 	asdf install
 	poetry install
 
+.PHONY: clean
+clean:
+	rm -rf dist/
+
 .PHONY: build
 build:
 	poetry build
@@ -15,8 +19,7 @@ publish: build
 	poetry publish
 
 .PHONY: release
-release: publish
-	rm -rf dist/
+release: clean publish
 	@echo sha: $(shell git rev-parse HEAD)
 	@echo version: $(VERSION)
 	ghr -t $(GITHUB_TOKEN) -u crflynn -r databricks-api -n $(VERSION) -c $(shell git rev-parse HEAD) -delete $(VERSION) dist/
