@@ -28,3 +28,6 @@ release: clean publish
 update:
 	poetry update databricks_cli
 	poetry run python generate_docs.py
+
+stubs:
+	poetry run python -m databricks_api.databricks
