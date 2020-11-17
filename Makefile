@@ -30,4 +30,8 @@ update:
 	poetry run python generate_docs.py
 
 stubs:
-	poetry run python -m databricks_api.databricks
+	poetry run python -m databricks_api._stubs
+	poetry run black .
+
+fmt:
+	poetry run black .
