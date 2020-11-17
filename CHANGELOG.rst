@@ -1,6 +1,11 @@
 Changelog
 ---------
 
+0.6.0: 2020-11-26
+~~~~~~~~~~~~~~~~~
+* add stub file for `DatabricksAPI`
+* remove `camel_to_snake` from `__all__`
+
 0.5.0: 2020-09-23
 ~~~~~~~~~~~~~~~~~
 

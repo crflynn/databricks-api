@@ -22,7 +22,7 @@ exclude = '''
 
 [tool.poetry]
 name = "databricks_api"
-version = "0.5.1"
+version = "0.6.0"
 description = "Databricks API client auto-generated from the official databricks-cli package"
 authors = ["Christopher Flynn <crf204@gmail.com>"]
 readme = "README.rst"
