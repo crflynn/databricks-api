@@ -22,7 +22,7 @@ Install using
     pip install databricks-api
     
 
-The docs here describe the interface for version **0.12.2** of
+The docs here describe the interface for version **0.12.0** of
 the ``databricks-cli`` package for API version **2.0**.
 Assuming there are no new major or minor versions to the ``databricks-cli`` package
 structure, this package should continue to work without a required update.
@@ -199,6 +199,7 @@ DatabricksAPI.cluster
         ssh_public_keys=None,
         custom_tags=None,
         cluster_log_conf=None,
+        init_scripts=None,
         spark_env_vars=None,
         autotermination_minutes=None,
         enable_elastic_disk=None,
@@ -225,6 +226,7 @@ DatabricksAPI.cluster
         ssh_public_keys=None,
         custom_tags=None,
         cluster_log_conf=None,
+        init_scripts=None,
         spark_env_vars=None,
         autotermination_minutes=None,
         enable_elastic_disk=None,
@@ -357,29 +359,12 @@ DatabricksAPI.dbfs
         headers=None,
     )
 
-    db.dbfs.add_block_test(
-        handle,
-        data,
-        headers=None,
-    )
-
     db.dbfs.close(
         handle,
         headers=None,
     )
 
-    db.dbfs.close_test(
-        handle,
-        headers=None,
-    )
-
     db.dbfs.create(
-        path,
-        overwrite=None,
-        headers=None,
-    )
-
-    db.dbfs.create_test(
         path,
         overwrite=None,
         headers=None,
@@ -391,18 +376,7 @@ DatabricksAPI.dbfs
         headers=None,
     )
 
-    db.dbfs.delete_test(
-        path,
-        recursive=None,
-        headers=None,
-    )
-
     db.dbfs.get_status(
-        path,
-        headers=None,
-    )
-
-    db.dbfs.get_status_test(
         path,
         headers=None,
     )
@@ -412,28 +386,12 @@ DatabricksAPI.dbfs
         headers=None,
     )
 
-    db.dbfs.list_test(
-        path,
-        headers=None,
-    )
-
     db.dbfs.mkdirs(
         path,
         headers=None,
     )
 
-    db.dbfs.mkdirs_test(
-        path,
-        headers=None,
-    )
-
     db.dbfs.move(
-        source_path,
-        destination_path,
-        headers=None,
-    )
-
-    db.dbfs.move_test(
         source_path,
         destination_path,
         headers=None,
@@ -446,21 +404,7 @@ DatabricksAPI.dbfs
         headers=None,
     )
 
-    db.dbfs.put_test(
-        path,
-        contents=None,
-        overwrite=None,
-        headers=None,
-    )
-
     db.dbfs.read(
-        path,
-        offset=None,
-        length=None,
-        headers=None,
-    )
-
-    db.dbfs.read_test(
         path,
         offset=None,
         length=None,
@@ -520,7 +464,6 @@ DatabricksAPI.secret
         scope,
         initial_manage_principal=None,
         scope_backend_type=None,
-        backend_azure_keyvault=None,
         headers=None,
     )
 
