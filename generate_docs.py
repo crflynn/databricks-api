@@ -103,7 +103,7 @@ for k, v in db.__dict__.items():
             signature = str(inspect.signature(method[1]))
             if "," in signature:
                 signature = "(\n        " + ",\n        ".join(signature[1:-1].split(", ")) + ",\n    )"
-            services.append("    DatabricksAPI." + k + "." + method[0] + signature + "\n\n")
+            services.append("    db." + k + "." + method[0] + signature + "\n\n")
     services.append("\n")
 
 

@@ -22,7 +22,7 @@ Install using
     pip install databricks-api
     
 
-The docs here describe the interface for version **0.12.0** of
+The docs here describe the interface for version **0.9.1** of
 the ``databricks-cli`` package for API version **2.0**.
 Assuming there are no new major or minor versions to the ``databricks-cli`` package
 structure, this package should continue to work without a required update.
@@ -34,15 +34,12 @@ the available service instances. The attributes of a ``DatabricksAPI`` instance 
 * DatabricksAPI.client *<databricks_cli.sdk.api_client.ApiClient>*
 * DatabricksAPI.jobs *<databricks_cli.sdk.service.JobsService>*
 * DatabricksAPI.cluster *<databricks_cli.sdk.service.ClusterService>*
-* DatabricksAPI.policy *<databricks_cli.sdk.service.PolicyService>*
 * DatabricksAPI.managed_library *<databricks_cli.sdk.service.ManagedLibraryService>*
 * DatabricksAPI.dbfs *<databricks_cli.sdk.service.DbfsService>*
 * DatabricksAPI.workspace *<databricks_cli.sdk.service.WorkspaceService>*
 * DatabricksAPI.secret *<databricks_cli.sdk.service.SecretService>*
 * DatabricksAPI.groups *<databricks_cli.sdk.service.GroupsService>*
-* DatabricksAPI.token *<databricks_cli.sdk.service.TokenService>*
 * DatabricksAPI.instance_pool *<databricks_cli.sdk.service.InstancePoolService>*
-* DatabricksAPI.delta_pipelines *<databricks_cli.sdk.service.DeltaPipelinesService>*
 
 To instantiate the client, provide the databricks host and either a token or
 user and password. Also shown is the full signature of the
@@ -87,12 +84,12 @@ DatabricksAPI.jobs
 
 .. code-block:: python
 
-    DatabricksAPI.jobs.cancel_run(
+    db.jobs.cancel_run(
         run_id,
         headers=None,
     )
 
-    DatabricksAPI.jobs.create_job(
+    db.jobs.create_job(
         name=None,
         existing_cluster_id=None,
         new_cluster=None,
@@ -111,40 +108,40 @@ DatabricksAPI.jobs
         headers=None,
     )
 
-    DatabricksAPI.jobs.delete_job(
+    db.jobs.delete_job(
         job_id,
         headers=None,
     )
 
-    DatabricksAPI.jobs.delete_run(
+    db.jobs.delete_run(
         run_id=None,
         headers=None,
     )
 
-    DatabricksAPI.jobs.export_run(
+    db.jobs.export_run(
         run_id,
         views_to_export=None,
         headers=None,
     )
 
-    DatabricksAPI.jobs.get_job(
+    db.jobs.get_job(
         job_id,
         headers=None,
     )
 
-    DatabricksAPI.jobs.get_run(
+    db.jobs.get_run(
         run_id=None,
         headers=None,
     )
 
-    DatabricksAPI.jobs.get_run_output(
+    db.jobs.get_run_output(
         run_id,
         headers=None,
     )
 
-    DatabricksAPI.jobs.list_jobs(headers=None)
+    db.jobs.list_jobs(headers=None)
 
-    DatabricksAPI.jobs.list_runs(
+    db.jobs.list_runs(
         job_id=None,
         active_only=None,
         completed_only=None,
@@ -153,13 +150,13 @@ DatabricksAPI.jobs
         headers=None,
     )
 
-    DatabricksAPI.jobs.reset_job(
+    db.jobs.reset_job(
         job_id,
         new_settings,
         headers=None,
     )
 
-    DatabricksAPI.jobs.run_now(
+    db.jobs.run_now(
         job_id=None,
         jar_params=None,
         notebook_params=None,
@@ -168,7 +165,7 @@ DatabricksAPI.jobs
         headers=None,
     )
 
-    DatabricksAPI.jobs.submit_run(
+    db.jobs.submit_run(
         run_name=None,
         existing_cluster_id=None,
         new_cluster=None,
@@ -187,7 +184,7 @@ DatabricksAPI.cluster
 
 .. code-block:: python
 
-    DatabricksAPI.cluster.create_cluster(
+    db.cluster.create_cluster(
         num_workers=None,
         autoscale=None,
         cluster_name=None,
@@ -199,7 +196,6 @@ DatabricksAPI.cluster
         ssh_public_keys=None,
         custom_tags=None,
         cluster_log_conf=None,
-        init_scripts=None,
         spark_env_vars=None,
         autotermination_minutes=None,
         enable_elastic_disk=None,
@@ -208,12 +204,12 @@ DatabricksAPI.cluster
         headers=None,
     )
 
-    DatabricksAPI.cluster.delete_cluster(
+    db.cluster.delete_cluster(
         cluster_id,
         headers=None,
     )
 
-    DatabricksAPI.cluster.edit_cluster(
+    db.cluster.edit_cluster(
         cluster_id,
         num_workers=None,
         autoscale=None,
@@ -226,7 +222,6 @@ DatabricksAPI.cluster
         ssh_public_keys=None,
         custom_tags=None,
         cluster_log_conf=None,
-        init_scripts=None,
         spark_env_vars=None,
         autotermination_minutes=None,
         enable_elastic_disk=None,
@@ -235,12 +230,12 @@ DatabricksAPI.cluster
         headers=None,
     )
 
-    DatabricksAPI.cluster.get_cluster(
+    db.cluster.get_cluster(
         cluster_id,
         headers=None,
     )
 
-    DatabricksAPI.cluster.get_events(
+    db.cluster.get_events(
         cluster_id,
         start_time=None,
         end_time=None,
@@ -251,76 +246,45 @@ DatabricksAPI.cluster
         headers=None,
     )
 
-    DatabricksAPI.cluster.list_available_zones(headers=None)
+    db.cluster.list_available_zones(headers=None)
 
-    DatabricksAPI.cluster.list_clusters(headers=None)
+    db.cluster.list_clusters(headers=None)
 
-    DatabricksAPI.cluster.list_node_types(headers=None)
+    db.cluster.list_node_types(headers=None)
 
-    DatabricksAPI.cluster.list_spark_versions(headers=None)
+    db.cluster.list_spark_versions(headers=None)
 
-    DatabricksAPI.cluster.permanent_delete_cluster(
+    db.cluster.permanent_delete_cluster(
         cluster_id,
         headers=None,
     )
 
-    DatabricksAPI.cluster.pin_cluster(
+    db.cluster.pin_cluster(
         cluster_id,
         headers=None,
     )
 
-    DatabricksAPI.cluster.resize_cluster(
+    db.cluster.resize_cluster(
         cluster_id,
         num_workers=None,
         autoscale=None,
         headers=None,
     )
 
-    DatabricksAPI.cluster.restart_cluster(
+    db.cluster.restart_cluster(
         cluster_id,
         headers=None,
     )
 
-    DatabricksAPI.cluster.start_cluster(
+    db.cluster.start_cluster(
         cluster_id,
         headers=None,
     )
 
-    DatabricksAPI.cluster.unpin_cluster(
+    db.cluster.unpin_cluster(
         cluster_id,
         headers=None,
     )
-
-
-DatabricksAPI.policy
---------------------
-
-.. code-block:: python
-
-    DatabricksAPI.policy.create_policy(
-        policy_name,
-        definition,
-        headers=None,
-    )
-
-    DatabricksAPI.policy.delete_policy(
-        policy_id,
-        headers=None,
-    )
-
-    DatabricksAPI.policy.edit_policy(
-        policy_id,
-        policy_name,
-        definition,
-        headers=None,
-    )
-
-    DatabricksAPI.policy.get_policy(
-        policy_id,
-        headers=None,
-    )
-
-    DatabricksAPI.policy.list_policies(headers=None)
 
 
 DatabricksAPI.managed_library
@@ -328,20 +292,20 @@ DatabricksAPI.managed_library
 
 .. code-block:: python
 
-    DatabricksAPI.managed_library.all_cluster_statuses(headers=None)
+    db.managed_library.all_cluster_statuses(headers=None)
 
-    DatabricksAPI.managed_library.cluster_status(
+    db.managed_library.cluster_status(
         cluster_id,
         headers=None,
     )
 
-    DatabricksAPI.managed_library.install_libraries(
+    db.managed_library.install_libraries(
         cluster_id,
         libraries=None,
         headers=None,
     )
 
-    DatabricksAPI.managed_library.uninstall_libraries(
+    db.managed_library.uninstall_libraries(
         cluster_id,
         libraries=None,
         headers=None,
@@ -353,58 +317,58 @@ DatabricksAPI.dbfs
 
 .. code-block:: python
 
-    DatabricksAPI.dbfs.add_block(
+    db.dbfs.add_block(
         handle,
         data,
         headers=None,
     )
 
-    DatabricksAPI.dbfs.close(
+    db.dbfs.close(
         handle,
         headers=None,
     )
 
-    DatabricksAPI.dbfs.create(
+    db.dbfs.create(
         path,
         overwrite=None,
         headers=None,
     )
 
-    DatabricksAPI.dbfs.delete(
+    db.dbfs.delete(
         path,
         recursive=None,
         headers=None,
     )
 
-    DatabricksAPI.dbfs.get_status(
+    db.dbfs.get_status(
         path,
         headers=None,
     )
 
-    DatabricksAPI.dbfs.list(
+    db.dbfs.list(
         path,
         headers=None,
     )
 
-    DatabricksAPI.dbfs.mkdirs(
+    db.dbfs.mkdirs(
         path,
         headers=None,
     )
 
-    DatabricksAPI.dbfs.move(
+    db.dbfs.move(
         source_path,
         destination_path,
         headers=None,
     )
 
-    DatabricksAPI.dbfs.put(
+    db.dbfs.put(
         path,
         contents=None,
         overwrite=None,
         headers=None,
     )
 
-    DatabricksAPI.dbfs.read(
+    db.dbfs.read(
         path,
         offset=None,
         length=None,
@@ -417,25 +381,25 @@ DatabricksAPI.workspace
 
 .. code-block:: python
 
-    DatabricksAPI.workspace.delete(
+    db.workspace.delete(
         path,
         recursive=None,
         headers=None,
     )
 
-    DatabricksAPI.workspace.export_workspace(
+    db.workspace.export_workspace(
         path,
         format=None,
         direct_download=None,
         headers=None,
     )
 
-    DatabricksAPI.workspace.get_status(
+    db.workspace.get_status(
         path,
         headers=None,
     )
 
-    DatabricksAPI.workspace.import_workspace(
+    db.workspace.import_workspace(
         path,
         format=None,
         language=None,
@@ -444,12 +408,12 @@ DatabricksAPI.workspace
         headers=None,
     )
 
-    DatabricksAPI.workspace.list(
+    db.workspace.list(
         path,
         headers=None,
     )
 
-    DatabricksAPI.workspace.mkdirs(
+    db.workspace.mkdirs(
         path,
         headers=None,
     )
@@ -460,56 +424,56 @@ DatabricksAPI.secret
 
 .. code-block:: python
 
-    DatabricksAPI.secret.create_scope(
+    db.secret.create_scope(
         scope,
         initial_manage_principal=None,
         scope_backend_type=None,
         headers=None,
     )
 
-    DatabricksAPI.secret.delete_acl(
+    db.secret.delete_acl(
         scope,
         principal,
         headers=None,
     )
 
-    DatabricksAPI.secret.delete_scope(
+    db.secret.delete_scope(
         scope,
         headers=None,
     )
 
-    DatabricksAPI.secret.delete_secret(
+    db.secret.delete_secret(
         scope,
         key,
         headers=None,
     )
 
-    DatabricksAPI.secret.get_acl(
+    db.secret.get_acl(
         scope,
         principal,
         headers=None,
     )
 
-    DatabricksAPI.secret.list_acls(
+    db.secret.list_acls(
         scope,
         headers=None,
     )
 
-    DatabricksAPI.secret.list_scopes(headers=None)
+    db.secret.list_scopes(headers=None)
 
-    DatabricksAPI.secret.list_secrets(
+    db.secret.list_secrets(
         scope,
         headers=None,
     )
 
-    DatabricksAPI.secret.put_acl(
+    db.secret.put_acl(
         scope,
         principal,
         permission,
         headers=None,
     )
 
-    DatabricksAPI.secret.put_secret(
+    db.secret.put_secret(
         scope,
         key,
         string_value=None,
@@ -523,59 +487,40 @@ DatabricksAPI.groups
 
 .. code-block:: python
 
-    DatabricksAPI.groups.add_to_group(
+    db.groups.add_to_group(
         parent_name,
         user_name=None,
         group_name=None,
         headers=None,
     )
 
-    DatabricksAPI.groups.create_group(
+    db.groups.create_group(
         group_name,
         headers=None,
     )
 
-    DatabricksAPI.groups.get_group_members(
+    db.groups.get_group_members(
         group_name,
         headers=None,
     )
 
-    DatabricksAPI.groups.get_groups(headers=None)
+    db.groups.get_groups(headers=None)
 
-    DatabricksAPI.groups.get_groups_for_principal(
+    db.groups.get_groups_for_principal(
         user_name=None,
         group_name=None,
         headers=None,
     )
 
-    DatabricksAPI.groups.remove_from_group(
+    db.groups.remove_from_group(
         parent_name,
         user_name=None,
         group_name=None,
         headers=None,
     )
 
-    DatabricksAPI.groups.remove_group(
+    db.groups.remove_group(
         group_name,
-        headers=None,
-    )
-
-
-DatabricksAPI.token
--------------------
-
-.. code-block:: python
-
-    DatabricksAPI.token.create_token(
-        lifetime_seconds=None,
-        comment=None,
-        headers=None,
-    )
-
-    DatabricksAPI.token.list_tokens(headers=None)
-
-    DatabricksAPI.token.revoke_token(
-        token_id,
         headers=None,
     )
 
@@ -585,7 +530,7 @@ DatabricksAPI.instance_pool
 
 .. code-block:: python
 
-    DatabricksAPI.instance_pool.create_instance_pool(
+    db.instance_pool.create_instance_pool(
         instance_pool_name=None,
         min_idle_instances=None,
         max_capacity=None,
@@ -599,12 +544,12 @@ DatabricksAPI.instance_pool
         headers=None,
     )
 
-    DatabricksAPI.instance_pool.delete_instance_pool(
+    db.instance_pool.delete_instance_pool(
         instance_pool_id=None,
         headers=None,
     )
 
-    DatabricksAPI.instance_pool.edit_instance_pool(
+    db.instance_pool.edit_instance_pool(
         instance_pool_id,
         instance_pool_name=None,
         min_idle_instances=None,
@@ -619,69 +564,11 @@ DatabricksAPI.instance_pool
         headers=None,
     )
 
-    DatabricksAPI.instance_pool.get_instance_pool(
+    db.instance_pool.get_instance_pool(
         instance_pool_id=None,
         headers=None,
     )
 
-    DatabricksAPI.instance_pool.list_instance_pools(headers=None)
-
-
-DatabricksAPI.delta_pipelines
------------------------------
-
-.. code-block:: python
-
-    DatabricksAPI.delta_pipelines.create(
-        id=None,
-        name=None,
-        storage=None,
-        configuration=None,
-        clusters=None,
-        libraries=None,
-        trigger=None,
-        filters=None,
-        allow_duplicate_names=None,
-        headers=None,
-    )
-
-    DatabricksAPI.delta_pipelines.delete(
-        pipeline_id=None,
-        headers=None,
-    )
-
-    DatabricksAPI.delta_pipelines.deploy(
-        pipeline_id=None,
-        id=None,
-        name=None,
-        storage=None,
-        configuration=None,
-        clusters=None,
-        libraries=None,
-        trigger=None,
-        filters=None,
-        allow_duplicate_names=None,
-        headers=None,
-    )
-
-    DatabricksAPI.delta_pipelines.get(
-        pipeline_id=None,
-        headers=None,
-    )
-
-    DatabricksAPI.delta_pipelines.reset(
-        pipeline_id=None,
-        headers=None,
-    )
-
-    DatabricksAPI.delta_pipelines.run(
-        pipeline_id=None,
-        headers=None,
-    )
-
-    DatabricksAPI.delta_pipelines.stop(
-        pipeline_id=None,
-        headers=None,
-    )
+    db.instance_pool.list_instance_pools(headers=None)
 
 
