@@ -33,8 +33,6 @@ Install using
 
 The docs here describe the interface for version **{version}** of
 the ``databricks-cli`` package for API version **{api_version}**.
-Assuming there are no new major or minor versions to the ``databricks-cli`` package
-structure, this package should continue to work without a required update.
 
 The ``databricks-api`` package contains a ``DatabricksAPI`` class which provides
 instance attributes for the ``databricks-cli`` ``ApiClient``, as well as each of

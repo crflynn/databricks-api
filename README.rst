@@ -22,10 +22,8 @@ Install using
     pip install databricks-api
     
 
-The docs here describe the interface for version **0.12.0** of
+The docs here describe the interface for version **0.16.2** of
 the ``databricks-cli`` package for API version **2.0**.
-Assuming there are no new major or minor versions to the ``databricks-cli`` package
-structure, this package should continue to work without a required update.
 
 The ``databricks-api`` package contains a ``DatabricksAPI`` class which provides
 instance attributes for the ``databricks-cli`` ``ApiClient``, as well as each of
@@ -43,6 +41,7 @@ the available service instances. The attributes of a ``DatabricksAPI`` instance 
 * DatabricksAPI.token *<databricks_cli.sdk.service.TokenService>*
 * DatabricksAPI.instance_pool *<databricks_cli.sdk.service.InstancePoolService>*
 * DatabricksAPI.delta_pipelines *<databricks_cli.sdk.service.DeltaPipelinesService>*
+* DatabricksAPI.repos *<databricks_cli.sdk.service.ReposService>*
 
 To instantiate the client, provide the databricks host and either a token or
 user and password. Also shown is the full signature of the
@@ -71,10 +70,11 @@ underlying ``ApiClient.__init__``
         password=None,
         host=None,
         token=None,
-        apiVersion=2.0,
+        api_version='2.0',
         default_headers={},
         verify=True,
-        command_name=''
+        command_name='',
+        jobs_api_version=None
     )
 
 Refer to the `official documentation <https://docs.databricks.com/api/index.html>`_
@@ -90,6 +90,7 @@ DatabricksAPI.jobs
     db.jobs.cancel_run(
         run_id,
         headers=None,
+        version=None,
     )
 
     db.jobs.create_job(
@@ -108,41 +109,56 @@ DatabricksAPI.jobs
         spark_python_task=None,
         spark_submit_task=None,
         max_concurrent_runs=None,
+        tasks=None,
         headers=None,
+        version=None,
     )
 
     db.jobs.delete_job(
         job_id,
         headers=None,
+        version=None,
     )
 
     db.jobs.delete_run(
         run_id=None,
         headers=None,
+        version=None,
     )
 
     db.jobs.export_run(
         run_id,
         views_to_export=None,
         headers=None,
+        version=None,
     )
 
     db.jobs.get_job(
         job_id,
         headers=None,
+        version=None,
     )
 
     db.jobs.get_run(
         run_id=None,
         headers=None,
+        version=None,
     )
 
     db.jobs.get_run_output(
         run_id,
         headers=None,
+        version=None,
     )
 
-    db.jobs.list_jobs(headers=None)
+    db.jobs.list_jobs(
+        job_type=None,
+        expand_tasks=None,
+        limit=None,
+        offset=None,
+        headers=None,
+        version=None,
+    )
 
     db.jobs.list_runs(
         job_id=None,
@@ -151,12 +167,14 @@ DatabricksAPI.jobs
         offset=None,
         limit=None,
         headers=None,
+        version=None,
     )
 
     db.jobs.reset_job(
         job_id,
         new_settings,
         headers=None,
+        version=None,
     )
 
     db.jobs.run_now(
@@ -166,6 +184,7 @@ DatabricksAPI.jobs
         python_params=None,
         spark_submit_params=None,
         headers=None,
+        version=None,
     )
 
     db.jobs.submit_run(
@@ -178,7 +197,9 @@ DatabricksAPI.jobs
         spark_python_task=None,
         spark_submit_task=None,
         timeout_seconds=None,
+        tasks=None,
         headers=None,
+        version=None,
     )
 
 
@@ -199,7 +220,6 @@ DatabricksAPI.cluster
         ssh_public_keys=None,
         custom_tags=None,
         cluster_log_conf=None,
-        init_scripts=None,
         spark_env_vars=None,
         autotermination_minutes=None,
         enable_elastic_disk=None,
@@ -226,7 +246,6 @@ DatabricksAPI.cluster
         ssh_public_keys=None,
         custom_tags=None,
         cluster_log_conf=None,
-        init_scripts=None,
         spark_env_vars=None,
         autotermination_minutes=None,
         enable_elastic_disk=None,
@@ -359,12 +378,29 @@ DatabricksAPI.dbfs
         headers=None,
     )
 
+    db.dbfs.add_block_test(
+        handle,
+        data,
+        headers=None,
+    )
+
     db.dbfs.close(
         handle,
         headers=None,
     )
 
+    db.dbfs.close_test(
+        handle,
+        headers=None,
+    )
+
     db.dbfs.create(
+        path,
+        overwrite=None,
+        headers=None,
+    )
+
+    db.dbfs.create_test(
         path,
         overwrite=None,
         headers=None,
@@ -376,7 +412,18 @@ DatabricksAPI.dbfs
         headers=None,
     )
 
+    db.dbfs.delete_test(
+        path,
+        recursive=None,
+        headers=None,
+    )
+
     db.dbfs.get_status(
+        path,
+        headers=None,
+    )
+
+    db.dbfs.get_status_test(
         path,
         headers=None,
     )
@@ -386,7 +433,17 @@ DatabricksAPI.dbfs
         headers=None,
     )
 
+    db.dbfs.list_test(
+        path,
+        headers=None,
+    )
+
     db.dbfs.mkdirs(
+        path,
+        headers=None,
+    )
+
+    db.dbfs.mkdirs_test(
         path,
         headers=None,
     )
@@ -397,14 +454,36 @@ DatabricksAPI.dbfs
         headers=None,
     )
 
+    db.dbfs.move_test(
+        source_path,
+        destination_path,
+        headers=None,
+    )
+
     db.dbfs.put(
         path,
         contents=None,
         overwrite=None,
         headers=None,
+        src_path=None,
+    )
+
+    db.dbfs.put_test(
+        path,
+        contents=None,
+        overwrite=None,
+        headers=None,
+        src_path=None,
     )
 
     db.dbfs.read(
+        path,
+        offset=None,
+        length=None,
+        headers=None,
+    )
+
+    db.dbfs.read_test(
         path,
         offset=None,
         length=None,
@@ -464,6 +543,7 @@ DatabricksAPI.secret
         scope,
         initial_manage_principal=None,
         scope_backend_type=None,
+        backend_azure_keyvault=None,
         headers=None,
     )
 
@@ -669,6 +749,11 @@ DatabricksAPI.delta_pipelines
         headers=None,
     )
 
+    db.delta_pipelines.list(
+        pagination=None,
+        headers=None,
+    )
+
     db.delta_pipelines.reset(
         pipeline_id=None,
         headers=None,
@@ -681,6 +766,42 @@ DatabricksAPI.delta_pipelines
 
     db.delta_pipelines.stop(
         pipeline_id=None,
+        headers=None,
+    )
+
+
+DatabricksAPI.repos
+-------------------
+
+.. code-block:: python
+
+    db.repos.create_repo(
+        url,
+        provider,
+        path=None,
+        headers=None,
+    )
+
+    db.repos.delete_repo(
+        id,
+        headers=None,
+    )
+
+    db.repos.get_repo(
+        id,
+        headers=None,
+    )
+
+    db.repos.list_repos(
+        path_prefix=None,
+        next_page_token=None,
+        headers=None,
+    )
+
+    db.repos.update_repo(
+        id,
+        branch=None,
+        tag=None,
         headers=None,
     )
 
