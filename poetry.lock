@@ -114,7 +114,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
 name = "databricks-cli"
-version = "0.12.0"
+version = "0.16.2"
 description = "A command line interface for Databricks"
 category = "main"
 optional = false
@@ -126,7 +126,6 @@ configparser = {version = ">=0.3.5", markers = "python_version < \"3.6\""}
 requests = ">=2.17.3"
 six = ">=1.10.0"
 tabulate = ">=0.7.7"
-tenacity = ">=6.2.0"
 
 [[package]]
 name = "funcsigs"
@@ -135,14 +134,6 @@ description = "Python function signatures from PEP362 for Python 2.6, 2.7 and 3.
 category = "dev"
 optional = false
 python-versions = "*"
-
-[[package]]
-name = "futures"
-version = "3.3.0"
-description = "Backport of the concurrent.futures package from Python 3"
-category = "main"
-optional = false
-python-versions = ">=2.6, <3"
 
 [[package]]
 name = "idna"
@@ -169,14 +160,6 @@ zipp = ">=0.5"
 [package.extras]
 docs = ["sphinx", "rst.linker"]
 testing = ["packaging", "pep517", "importlib-resources (>=1.3)"]
-
-[[package]]
-name = "monotonic"
-version = "1.5"
-description = "An implementation of time.monotonic() for Python 2 & < 3.3"
-category = "main"
-optional = false
-python-versions = "*"
 
 [[package]]
 name = "more-itertools"
@@ -341,23 +324,6 @@ python-versions = "*"
 widechars = ["wcwidth"]
 
 [[package]]
-name = "tenacity"
-version = "6.2.0"
-description = "Retry code until it succeeds"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-futures = {version = ">=3.0", markers = "python_version == \"2.7\""}
-monotonic = {version = ">=0.6", markers = "python_version == \"2.7\""}
-six = ">=1.9.0"
-typing = {version = ">=3.7.4.1", markers = "python_version == \"2.7\""}
-
-[package.extras]
-doc = ["reno", "sphinx", "tornado (>=4.5)"]
-
-[[package]]
 name = "toml"
 version = "0.10.1"
 description = "Python Library for Tom's Obvious, Minimal Language"
@@ -372,14 +338,6 @@ description = "a fork of Python 2 and 3 ast modules with type comment support"
 category = "dev"
 optional = false
 python-versions = "*"
-
-[[package]]
-name = "typing"
-version = "3.7.4.3"
-description = "Type Hints for Python"
-category = "main"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
 name = "urllib3"
@@ -423,7 +381,7 @@ testing = ["pathlib2", "unittest2", "jaraco.itertools", "func-timeout"]
 [metadata]
 lock-version = "1.1"
 python-versions = "~2.7 || ^3.5"
-content-hash = "ea16851468cf7aec52634eae1126e05a5586ee4f58651b6714c88aac2406cc86"
+content-hash = "ea132067621591ffb460d4652eefa86b8ed8032a887c1112dfec5d832a9253a3"
 
 [metadata.files]
 appdirs = [
@@ -471,16 +429,12 @@ contextlib2 = [
     {file = "contextlib2-0.6.0.post1.tar.gz", hash = "sha256:01f490098c18b19d2bd5bb5dc445b2054d2fa97f09a4280ba2c5f3c394c8162e"},
 ]
 databricks-cli = [
-    {file = "databricks-cli-0.12.0.tar.gz", hash = "sha256:a1489ef893cd96ab784d7f5c0764a02bc20ea213a798f640b1004a1018122f36"},
-    {file = "databricks_cli-0.12.0-py2-none-any.whl", hash = "sha256:d53ebb0151c2313c2ad4f016a37fda503eed205cc05363050bb870ea4141e84e"},
+    {file = "databricks-cli-0.16.2.tar.gz", hash = "sha256:3e9a65a19a589b795ebbd9b3b16a8e470d612d57d6216ae44a9c7a735e4080e6"},
+    {file = "databricks_cli-0.16.2-py2-none-any.whl", hash = "sha256:74c35b38fe686881af4b4797c4f3ab2e1c9e9ff4986f470486f152fb45d19b24"},
 ]
 funcsigs = [
     {file = "funcsigs-1.0.2-py2.py3-none-any.whl", hash = "sha256:330cc27ccbf7f1e992e69fef78261dc7c6569012cf397db8d3de0234e6c937ca"},
     {file = "funcsigs-1.0.2.tar.gz", hash = "sha256:a7bb0f2cf3a3fd1ab2732cb49eba4252c2af4240442415b4abce3b87022a8f50"},
-]
-futures = [
-    {file = "futures-3.3.0-py2-none-any.whl", hash = "sha256:49b3f5b064b6e3afc3316421a3f25f66c137ae88f068abbf72830170033c5e16"},
-    {file = "futures-3.3.0.tar.gz", hash = "sha256:7e033af76a5e35f58e56da7a91e687706faf4e7bdfb2cbc3f2cca6b9bcda9794"},
 ]
 idna = [
     {file = "idna-2.10-py2.py3-none-any.whl", hash = "sha256:b97d804b1e9b523befed77c48dacec60e6dcb0b5391d57af6a65a312a90648c0"},
@@ -489,10 +443,6 @@ idna = [
 importlib-metadata = [
     {file = "importlib_metadata-2.0.0-py2.py3-none-any.whl", hash = "sha256:cefa1a2f919b866c5beb7c9f7b0ebb4061f30a8a9bf16d609b000e2dfaceb9c3"},
     {file = "importlib_metadata-2.0.0.tar.gz", hash = "sha256:77a540690e24b0305878c37ffd421785a6f7e53c8b5720d211b211de8d0e95da"},
-]
-monotonic = [
-    {file = "monotonic-1.5-py2.py3-none-any.whl", hash = "sha256:552a91f381532e33cbd07c6a2655a21908088962bb8fa7239ecbcc6ad1140cc7"},
-    {file = "monotonic-1.5.tar.gz", hash = "sha256:23953d55076df038541e648a53676fb24980f7a1be290cdda21300b3bc21dfb0"},
 ]
 more-itertools = [
     {file = "more-itertools-5.0.0.tar.gz", hash = "sha256:38a936c0a6d98a38bcc2d03fdaaedaba9f412879461dd2ceff8d37564d6522e4"},
@@ -577,10 +527,6 @@ tabulate = [
     {file = "tabulate-0.8.7-py3-none-any.whl", hash = "sha256:ac64cb76d53b1231d364babcd72abbb16855adac7de6665122f97b593f1eb2ba"},
     {file = "tabulate-0.8.7.tar.gz", hash = "sha256:db2723a20d04bcda8522165c73eea7c300eda74e0ce852d9022e0159d7895007"},
 ]
-tenacity = [
-    {file = "tenacity-6.2.0-py2.py3-none-any.whl", hash = "sha256:5a5d3dcd46381abe8b4f82b5736b8726fd3160c6c7161f53f8af7f1eb9b82173"},
-    {file = "tenacity-6.2.0.tar.gz", hash = "sha256:29ae90e7faf488a8628432154bb34ace1cca58244c6ea399fd33f066ac71339a"},
-]
 toml = [
     {file = "toml-0.10.1-py2.py3-none-any.whl", hash = "sha256:bda89d5935c2eac546d648028b9901107a595863cb36bae0c73ac804a9b4ce88"},
     {file = "toml-0.10.1.tar.gz", hash = "sha256:926b612be1e5ce0634a2ca03470f95169cf16f939018233a670519cb4ac58b0f"},
@@ -607,10 +553,6 @@ typed-ast = [
     {file = "typed_ast-1.4.1-cp38-cp38-win_amd64.whl", hash = "sha256:fc0fea399acb12edbf8a628ba8d2312f583bdbdb3335635db062fa98cf71fca4"},
     {file = "typed_ast-1.4.1-cp39-cp39-macosx_10_15_x86_64.whl", hash = "sha256:d43943ef777f9a1c42bf4e552ba23ac77a6351de620aa9acf64ad54933ad4d34"},
     {file = "typed_ast-1.4.1.tar.gz", hash = "sha256:8c8aaad94455178e3187ab22c8b01a3837f8ee50e09cf31f1ba129eb293ec30b"},
-]
-typing = [
-    {file = "typing-3.7.4.3-py2-none-any.whl", hash = "sha256:283d868f5071ab9ad873e5e52268d611e851c870a2ba354193026f2dfb29d8b5"},
-    {file = "typing-3.7.4.3.tar.gz", hash = "sha256:1187fb9c82fd670d10aa07bbb6cfcfe4bdda42d6fab8d5134f04e8c4d0b71cc9"},
 ]
 urllib3 = [
     {file = "urllib3-1.25.11-py2.py3-none-any.whl", hash = "sha256:f5321fbe4bf3fefa0efd0bfe7fb14e90909eb62a48ccda331726b4319897dd5e"},

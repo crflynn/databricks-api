@@ -50,7 +50,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "~2.7 || ^3.5"
-databricks-cli = "^0.12.0"
+databricks-cli = "^0.16.2"
 
 [tool.poetry.dev-dependencies]
 black = {version = "^19.10b0",allow-prereleases = true,python = "^3.7"}

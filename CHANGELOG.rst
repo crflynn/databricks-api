@@ -1,6 +1,11 @@
 Changelog
 ---------
 
+0.7.0: 2021-11-21
+~~~~~~~~~~~~~~~~~
+
+* upgrade to cli 0.16.2
+
 0.6.0: 2020-11-26
 ~~~~~~~~~~~~~~~~~
 * add stub file for `DatabricksAPI`
