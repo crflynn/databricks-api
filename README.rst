@@ -22,7 +22,7 @@ Install using
     pip install databricks-api
     
 
-The docs here describe the interface for version **0.16.2** of
+The docs here describe the interface for version **0.17.0** of
 the ``databricks-cli`` package for API version **2.0**.
 
 The ``databricks-api`` package contains a ``DatabricksAPI`` class which provides
@@ -183,6 +183,8 @@ DatabricksAPI.jobs
         notebook_params=None,
         python_params=None,
         spark_submit_params=None,
+        python_named_params=None,
+        idempotency_token=None,
         headers=None,
         version=None,
     )
@@ -761,6 +763,12 @@ DatabricksAPI.delta_pipelines
 
     db.delta_pipelines.run(
         pipeline_id=None,
+        headers=None,
+    )
+
+    db.delta_pipelines.start_update(
+        pipeline_id=None,
+        full_refresh=None,
         headers=None,
     )
 
