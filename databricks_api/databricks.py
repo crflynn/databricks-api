@@ -3,7 +3,7 @@ import re
 import databricks_cli.sdk.service as services
 from databricks_cli.sdk import ApiClient
 
-___all__ = ["DatabricksAPI"]
+__all__ = ["DatabricksAPI"]
 
 
 def camel_to_snake(name):

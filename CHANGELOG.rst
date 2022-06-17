@@ -1,6 +1,14 @@
 Changelog
 ---------
 
+0.8.0: 2022-06-17
+~~~~~~~~~~~~~~~~~
+
+* free the dependency constraint on ``databricks-cli``
+* remove clutter from ``__version__`` module
+* add ``__cli_version__`` variable referencing the ``databricks-cli`` version
+* fix ``__all__`` variable in ``databricks`` module
+
 0.7.0: 2021-11-21
 ~~~~~~~~~~~~~~~~~
 
