@@ -10,7 +10,7 @@ db = DatabricksAPI(host="localhost", token="token")
 intro = """databricks-api
 ==============
 
-**Please switch to the `official Databricks SDK for Python<https://github.com/databricks/databricks-sdk-py>`:**
+**Please switch to the `official Databricks SDK for Python<https://github.com/databricks/databricks-sdk-py>`**
 
 .. code-block:: bash
 
