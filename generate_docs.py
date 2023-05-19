@@ -10,11 +10,11 @@ db = DatabricksAPI(host="localhost", token="token")
 intro = """databricks-api
 ==============
 
-**Please switch to the `official Databricks SDK for Python<https://github.com/databricks/databricks-sdk-py>`**
+**Please switch to the `official Databricks SDK for Python<https://github.com/databricks/databricks-sdk-py>` by running the following command:**
 
 .. code-block:: bash
 
-    pip install pip install databricks-sdk
+    pip install databricks-sdk
 
 
 |pypi| |pyversions|
