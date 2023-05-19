@@ -1,5 +1,6 @@
 import re
 
+import warnings
 import databricks_cli.sdk.service as services
 from databricks_cli.sdk import ApiClient
 
@@ -20,6 +21,16 @@ def _get_services():
 
 class DatabricksAPI:
     def __init__(self, **kwargs):
+        warnings.warn(
+            """
+        ==================================================================
+        Please switch to the official Databricks SDK for Python by running
+        `pip install databricks-sdk`. See more information and sources at
+        https://github.com/databricks/databricks-sdk-py
+        ==================================================================""",
+            DeprecationWarning,
+        )
+
         if "host" in kwargs:
             if not kwargs["host"].startswith("https://"):
                 kwargs["host"] = "https://" + kwargs["host"]
